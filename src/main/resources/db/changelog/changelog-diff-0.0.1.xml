@@ -1,0 +1,606 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="iamwlb (generated)" id="1665300697378-1">
+        <createTable tableName="abnormal_login">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="abnormal_login_pkey"/>
+            </column>
+            <column name="affect_ip" type="VARCHAR(255)"/>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="login_id" type="VARCHAR(255)"/>
+            <column name="login_status" type="VARCHAR(255)"/>
+            <column name="src_ip" type="VARCHAR(255)"/>
+            <column name="containerid" type="VARCHAR(1000)"/>
+            <column name="imageid" type="VARCHAR(1000)"/>
+            <column name="imagename" type="VARCHAR(1000)"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-2">
+        <createTable tableName="back_door">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="back_door_pkey"/>
+            </column>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+            <column name="process" type="VARCHAR(255)"/>
+            <column name="process_path" type="VARCHAR(255)"/>
+            <column name="containerid" type="VARCHAR(1000)"/>
+            <column name="containername" type="VARCHAR(1000)"/>
+            <column name="imageid" type="VARCHAR(1000)"/>
+            <column name="imagename" type="VARCHAR(1000)"/>
+            <column name="rule_id" type="VARCHAR(255)"/>
+            <column name="rule_name" type="VARCHAR(255)"/>
+            <column name="rule_suggest" type="VARCHAR(255)"/>
+            <column name="rule_type" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-3">
+        <createTable tableName="base_line_conf">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="base_line_conf_pkey"/>
+            </column>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="begin_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creator" type="VARCHAR(255)"/>
+            <column name="cron" type="VARCHAR(255)"/>
+            <column name="day" type="VARCHAR(255)"/>
+            <column name="end_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="group_id" type="VARCHAR(255)"/>
+            <column name="is_open" type="INTEGER"/>
+            <column name="policy" type="VARCHAR(3000)"/>
+            <column name="rule" type="INTEGER"/>
+            <column name="status" type="INTEGER"/>
+            <column name="update_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="day_type" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-4">
+        <createTable tableName="custom_rule">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="custom_rule_pkey"/>
+            </column>
+            <column name="condition" type="VARCHAR(255)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creator" type="VARCHAR(255)"/>
+            <column name="group_id" type="VARCHAR(255)"/>
+            <column name="level" type="VARCHAR(255)"/>
+            <column name="message" type="VARCHAR(255)"/>
+            <column name="policy" type="VARCHAR(3000)"/>
+            <column name="process" type="VARCHAR(255)"/>
+            <column name="processop" type="VARCHAR(255)"/>
+            <column name="rule_name" type="VARCHAR(255)"/>
+            <column name="rule_status" type="VARCHAR(255)"/>
+            <column name="status" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="suggest" type="VARCHAR(255)"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="update_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+            <column name="rule_id" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-5">
+        <createTable tableName="doc_protect">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="doc_protect_pkey"/>
+            </column>
+            <column name="action" type="VARCHAR(255)"/>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="file_id" type="VARCHAR(255)"/>
+            <column name="file_name" type="VARCHAR(255)"/>
+            <column name="file_path" type="VARCHAR(255)"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+            <column name="md5" type="VARCHAR(255)"/>
+            <column name="result" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="containerid" type="VARCHAR(1000)"/>
+            <column name="imageid" type="VARCHAR(1000)"/>
+            <column name="imagename" type="VARCHAR(1000)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-6">
+        <createTable tableName="escape_risk">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="escape_risk_pkey"/>
+            </column>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="container_name" type="VARCHAR(1000)"/>
+            <column name="containerid" type="VARCHAR(1000)"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+            <column name="imageid" type="VARCHAR(1000)"/>
+            <column name="imagename" type="VARCHAR(1000)"/>
+            <column name="process" type="VARCHAR(255)"/>
+            <column name="process_path" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-7">
+        <createTable tableName="file_check">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="file_check_pkey"/>
+            </column>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="file_path" type="VARCHAR(255)"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+            <column name="pid" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="process_name" type="VARCHAR(255)"/>
+            <column name="process_path" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-8">
+        <createTable tableName="file_protect">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="file_protect_pkey"/>
+            </column>
+            <column name="action" type="VARCHAR(255)"/>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="file_name" type="VARCHAR(255)"/>
+            <column name="file_path" type="VARCHAR(255)"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+            <column name="pid" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="process" type="VARCHAR(255)"/>
+            <column name="process_path" type="VARCHAR(255)"/>
+            <column name="result" type="VARCHAR(255)"/>
+            <column name="containerid" type="VARCHAR(1000)"/>
+            <column name="imageid" type="VARCHAR(1000)"/>
+            <column name="imagename" type="VARCHAR(1000)"/>
+            <column name="legal" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-9">
+        <createTable tableName="group_policy">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="group_policy_pkey"/>
+            </column>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creator" type="VARCHAR(255)"/>
+            <column name="cron" type="VARCHAR(255)"/>
+            <column name="group_id" type="VARCHAR(255)"/>
+            <column name="policy" type="VARCHAR(3000)"/>
+            <column name="status" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="update_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-10">
+        <createTable tableName="inbreak_conf">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="inbreak_conf_pkey"/>
+            </column>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creator" type="VARCHAR(255)"/>
+            <column name="cron" type="VARCHAR(255)"/>
+            <column name="group_id" type="VARCHAR(255)"/>
+            <column name="policy" type="VARCHAR(3000)"/>
+            <column name="status" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="update_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-11">
+        <createTable tableName="isolation">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="isolation_pkey"/>
+            </column>
+            <column name="agent_id" type="VARCHAR(255)"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="file_name" type="VARCHAR(255)"/>
+            <column name="file_path" type="VARCHAR(255)"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+            <column name="is_delete" type="VARCHAR(255)"/>
+            <column name="md5" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="update_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="virus_name" type="VARCHAR(255)"/>
+            <column name="virus_type" type="VARCHAR(255)"/>
+            <column name="qid" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delete" type="BOOLEAN"/>
+            <column name="in_whitelist" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-12">
+        <createTable tableName="local_right">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="local_right_pkey"/>
+            </column>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+            <column name="process" type="VARCHAR(255)"/>
+            <column name="process_path" type="VARCHAR(255)"/>
+            <column name="containerid" type="VARCHAR(1000)"/>
+            <column name="containername" type="VARCHAR(1000)"/>
+            <column name="imageid" type="VARCHAR(1000)"/>
+            <column name="imagename" type="VARCHAR(1000)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-13">
+        <createTable tableName="mining_check">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="mining_check_pkey"/>
+            </column>
+            <column name="affect_ip" type="VARCHAR(255)"/>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="process_path" type="VARCHAR(255)"/>
+            <column name="process" type="VARCHAR(255)"/>
+            <column name="containerid" type="VARCHAR(1000)"/>
+            <column name="containername" type="VARCHAR(1000)"/>
+            <column name="imageid" type="VARCHAR(1000)"/>
+            <column name="imagename" type="VARCHAR(1000)"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-14">
+        <createTable tableName="monitor_policy">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="monitor_policy_pkey"/>
+            </column>
+            <column name="policy" type="VARCHAR(3000)"/>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="update_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-15">
+        <createTable tableName="process_base">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="process_base_pkey"/>
+            </column>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+            <column name="process" type="VARCHAR(255)"/>
+            <column name="process_path" type="VARCHAR(255)"/>
+            <column name="status" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="update_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="containerid" type="VARCHAR(1000)"/>
+            <column name="imageid" type="VARCHAR(1000)"/>
+            <column name="imagename" type="VARCHAR(1000)"/>
+            <column name="action" type="VARCHAR(255)"/>
+            <column name="apiargs" type="VARCHAR(255)"/>
+            <column name="apiname" type="VARCHAR(255)"/>
+            <column name="baselinetype" type="VARCHAR(255)"/>
+            <column name="containername" type="VARCHAR(255)"/>
+            <column name="file_path" type="VARCHAR(255)"/>
+            <column name="process_name" type="VARCHAR(255)"/>
+            <column name="service_type" type="VARCHAR(255)"/>
+            <column name="container_id" type="VARCHAR(1000)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-16">
+        <createTable tableName="ransom_check">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ransom_check_pkey"/>
+            </column>
+            <column name="affect_ip" type="VARCHAR(255)"/>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="file_path" type="VARCHAR(255)"/>
+            <column name="process_path" type="VARCHAR(255)"/>
+            <column name="process" type="VARCHAR(255)"/>
+            <column name="containerid" type="VARCHAR(1000)"/>
+            <column name="imageid" type="VARCHAR(1000)"/>
+            <column name="imagename" type="VARCHAR(1000)"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-17">
+        <createTable tableName="rebound_shell">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="rebound_shell_pkey"/>
+            </column>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="dip" type="VARCHAR(255)"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+            <column name="parent_cmdline" type="VARCHAR(255)"/>
+            <column name="parent_path" type="VARCHAR(255)"/>
+            <column name="pid" type="VARCHAR(255)"/>
+            <column name="process" type="VARCHAR(255)"/>
+            <column name="process_cmdline" type="VARCHAR(255)"/>
+            <column name="process_path" type="VARCHAR(255)"/>
+            <column name="tree_desc" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-18">
+        <createTable tableName="registry_protect">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="registry_protect_pkey"/>
+            </column>
+            <column name="action" type="VARCHAR(255)"/>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+            <column name="pid" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="process" type="VARCHAR(255)"/>
+            <column name="process_path" type="VARCHAR(255)"/>
+            <column name="registry_key" type="VARCHAR(255)"/>
+            <column name="registry_value" type="VARCHAR(255)"/>
+            <column name="result" type="VARCHAR(255)"/>
+            <column name="containerid" type="VARCHAR(1000)"/>
+            <column name="imageid" type="VARCHAR(1000)"/>
+            <column name="imagename" type="VARCHAR(1000)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-19">
+        <createTable tableName="sensitive_info">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="sensitive_info_pkey"/>
+            </column>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="container_name" type="VARCHAR(1000)"/>
+            <column name="containerid" type="VARCHAR(1000)"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+            <column name="imageid" type="VARCHAR(1000)"/>
+            <column name="imagename" type="VARCHAR(1000)"/>
+            <column name="process" type="VARCHAR(255)"/>
+            <column name="process_path" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-20">
+        <createTable tableName="strategy_info">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="strategy_info_pkey"/>
+            </column>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="create_uid" type="VARCHAR(255)"/>
+            <column name="policy_conf" type="VARCHAR(255)"/>
+            <column name="policy_des" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="update_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="group_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-21">
+        <createTable tableName="strategy_info_detail">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="strategy_info_detail_pkey"/>
+            </column>
+            <column name="agentid" type="VARCHAR(255)"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="create_uid" type="VARCHAR(255)"/>
+            <column name="groupid" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="taskid" type="VARCHAR(255)"/>
+            <column name="update_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-22">
+        <createTable tableName="suspicious">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="suspicious_pkey"/>
+            </column>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="explain" type="VARCHAR(255)"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+            <column name="process" type="VARCHAR(255)"/>
+            <column name="process_path" type="VARCHAR(255)"/>
+            <column name="containerid" type="VARCHAR(1000)"/>
+            <column name="containername" type="VARCHAR(1000)"/>
+            <column name="imageid" type="VARCHAR(1000)"/>
+            <column name="imagename" type="VARCHAR(1000)"/>
+            <column name="rule_id" type="VARCHAR(255)"/>
+            <column name="rule_name" type="VARCHAR(255)"/>
+            <column name="rule_suggest" type="VARCHAR(255)"/>
+            <column name="rule_type" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-23">
+        <createTable tableName="sys_cmd_defence">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="sys_cmd_defence_pkey"/>
+            </column>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="file_path" type="VARCHAR(255)"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+            <column name="md5" type="VARCHAR(255)"/>
+            <column name="safe_suggest" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-24">
+        <createTable tableName="threat">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="threat_pkey"/>
+            </column>
+            <column name="agentid" type="VARCHAR(255)"/>
+            <column name="analysis" type="VARCHAR(255)"/>
+            <column name="containerid" type="VARCHAR(255)"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="file_name" type="VARCHAR(1000)"/>
+            <column name="file_path" type="VARCHAR(3000)"/>
+            <column name="isolation" type="VARCHAR(255)"/>
+            <column name="md5" type="VARCHAR(255)"/>
+            <column name="method" type="VARCHAR(255)"/>
+            <column name="size" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="virus_name" type="VARCHAR(255)"/>
+            <column name="virus_type" type="VARCHAR(255)"/>
+            <column name="update_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="check_method" type="VARCHAR(255)"/>
+            <column name="discovery_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="md5_value" type="VARCHAR(255)"/>
+            <column name="workload_id" type="VARCHAR(255)"/>
+            <column name="qid" type="BIGINT"/>
+            <column name="delete" type="BOOLEAN"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+            <column name="is_expire" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-25">
+        <createTable tableName="violence_crack">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="violence_crack_pkey"/>
+            </column>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="dest_ip" type="VARCHAR(255)"/>
+            <column name="server_type" type="VARCHAR(255)"/>
+            <column name="src_ip" type="VARCHAR(255)"/>
+            <column name="containerid" type="VARCHAR(1000)"/>
+            <column name="imageid" type="VARCHAR(1000)"/>
+            <column name="imagename" type="VARCHAR(1000)"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-26">
+        <createTable tableName="web_defence">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="web_defence_pkey"/>
+            </column>
+            <column name="action" type="VARCHAR(255)"/>
+            <column name="aid" type="VARCHAR(255)"/>
+            <column name="alarm_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="file_name" type="VARCHAR(255)"/>
+            <column name="file_path" type="VARCHAR(255)"/>
+            <column name="host_ip" type="VARCHAR(255)"/>
+            <column name="pid" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="process" type="VARCHAR(255)"/>
+            <column name="process_path" type="VARCHAR(255)"/>
+            <column name="result" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-27">
+        <createTable tableName="webshell_conf">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="webshell_conf_pkey"/>
+            </column>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="creator" type="VARCHAR(255)"/>
+            <column name="cron" type="VARCHAR(255)"/>
+            <column name="group_id" type="VARCHAR(255)"/>
+            <column name="policy" type="VARCHAR(3000)"/>
+            <column name="status" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="update_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="update_user" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-28">
+        <createTable tableName="white_list">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="white_list_pkey"/>
+            </column>
+            <column name="creat_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="file_name" type="VARCHAR(255)"/>
+            <column name="file_path" type="VARCHAR(255)"/>
+            <column name="is_open" type="VARCHAR(255)"/>
+            <column name="md5" type="VARCHAR(255)"/>
+            <column name="update_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="virus_name" type="VARCHAR(255)"/>
+            <column name="virus_type" type="VARCHAR(255)"/>
+            <column name="scope" type="VARCHAR(255)"/>
+            <column name="create_uid" type="VARCHAR(64)"/>
+            <column name="custom_file_dir" type="VARCHAR(255)"/>
+            <column name="custom_file_path" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-29">
+        <createTable tableName="white_process">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="white_process_pkey"/>
+            </column>
+            <column name="process_name" type="VARCHAR(512)"/>
+            <column name="process_file" type="VARCHAR(1024)"/>
+            <column name="process_cmd" type="VARCHAR(512)"/>
+            <column name="threaten_type" type="VARCHAR(64)"/>
+            <column name="agentid" type="VARCHAR(128)"/>
+            <column name="create_uid" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="update_uid" type="VARCHAR(64)"/>
+            <column name="update_time" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" remarks="open开，close关" type="VARCHAR(64)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-30">
+        <dropTable tableName="basic_cve_info"/>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-31">
+        <dropTable tableName="basic_setting_item"/>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-32">
+        <dropTable tableName="docker_risk_records"/>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-33">
+        <dropTable tableName="k8s_risk_records"/>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-34">
+        <dropTable tableName="role"/>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-35">
+        <dropTable tableName="setting_item_template"/>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-36">
+        <dropTable tableName="setting_risk_detect_items"/>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-37">
+        <dropTable tableName="setting_risk_records_info"/>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-38">
+        <dropTable tableName="system_bug_records_info"/>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-39">
+        <dropTable tableName="temp_basic_cve"/>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-40">
+        <dropTable tableName="user"/>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-41">
+        <dropTable tableName="weak_password_records_info"/>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665300697378-42">
+        <dropTable tableName="win_vul_patch_info"/>
+    </changeSet>
+</databaseChangeLog>

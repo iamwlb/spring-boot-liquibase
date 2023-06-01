@@ -1,0 +1,831 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="wanglibing (generated)" id="1665285679961-1">
+        <createTable remarks="用户信息表" tableName="user">
+            <column name="id" remarks="主键" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_pkey"/>
+            </column>
+            <column name="username" remarks="用户名称" type="VARCHAR(255)"/>
+            <column name="password" remarks="密码" type="VARCHAR(255)"/>
+            <column name="age" remarks="性别" type="INTEGER"/>
+            <column name="sex" remarks="性别" type="VARCHAR(255)"/>
+            <column name="role" remarks="角色" type="VARCHAR(255)"/>
+            <column defaultValueComputed="now()" name="create_time" remarks="创建时间" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665285679961-2">
+        <createTable tableName="basic_cve_info">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="basic_cve_info_pkey"/>
+            </column>
+            <column name="cve_id" remarks="cveId" type="VARCHAR(64)"/>
+            <column name="cwe_id" remarks="暂时没有用到，也存下来" type="VARCHAR(64)"/>
+            <column name="score" remarks="评分" type="VARCHAR(32)"/>
+            <column name="title" remarks="漏洞名称" type="VARCHAR(512)"/>
+            <column name="type" remarks="漏洞类型" type="VARCHAR(256)"/>
+            <column name="description" remarks="漏洞详细描述" type="TEXT"/>
+            <column name="official_solutions" remarks="官方解决方案" type="TEXT"/>
+            <column name="suggestions" remarks="建议" type="TEXT"/>
+            <column name="references_list" remarks="参考资料" type="TEXT"/>
+            <column name="cnvd_id" remarks="cnvd_id，暂时没有用到，也存下来" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="severity" type="VARCHAR(64)"/>
+            <column name="vector_string" remarks="评分细则" type="VARCHAR(255)"/>
+            <column name="exp_flag" remarks="是否exp特征" type="VARCHAR(32)"/>
+            <column name="attack_complexity" type="VARCHAR(255)"/>
+            <column name="attack_vector" type="VARCHAR(255)"/>
+            <column name="availability_impact" type="VARCHAR(255)"/>
+            <column name="confidentiality_impact" type="VARCHAR(255)"/>
+            <column name="integrity_impact" type="VARCHAR(255)"/>
+            <column name="privileges_required" type="VARCHAR(255)"/>
+            <column name="user_interaction" type="VARCHAR(255)"/>
+            <column name="risk_type" type="VARCHAR(255)"/>
+            <column name="public_time" remarks="漏洞发布时间" type="VARCHAR(255)"/>
+            <column name="update_time" remarks="漏洞更新时间" type="VARCHAR(255)"/>
+            <column name="cnnvd_number" type="VARCHAR(64)"/>
+            <column name="affects" remarks="受影响实体" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665285679961-3">
+        <createTable tableName="temp_basic_cve">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="temp_basic_cve_pkey"/>
+            </column>
+            <column name="affects" type="TEXT"/>
+            <column name="cnnvd_number" type="VARCHAR(64)"/>
+            <column name="cve_number" type="VARCHAR(64)"/>
+            <column name="level" type="VARCHAR(64)"/>
+            <column name="links" type="TEXT"/>
+            <column name="manufacturer" type="TEXT"/>
+            <column name="official_solutions" type="TEXT"/>
+            <column name="patch" type="TEXT"/>
+            <column name="public_time" type="VARCHAR(255)"/>
+            <column name="risk_type" type="VARCHAR(255)"/>
+            <column name="source" type="VARCHAR(255)"/>
+            <column name="summary" type="TEXT"/>
+            <column name="title" type="VARCHAR(512)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="update_time" type="VARCHAR(255)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665285679961-4">
+        <createIndex indexName="INDX_CVE_ID" tableName="basic_cve_info">
+            <column name="cve_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665285679961-5">
+        <createIndex indexName="INDX_CVE_NUMBER" tableName="temp_basic_cve" unique="true">
+            <column name="cve_number"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665285679961-6">
+        <createTable tableName="basic_setting_item">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="basic_setting_item_pkey"/>
+            </column>
+            <column name="item_id" type="VARCHAR(64)"/>
+            <column name="type" type="VARCHAR(64)"/>
+            <column name="item" type="VARCHAR(512)"/>
+            <column name="expected" type="VARCHAR(512)"/>
+            <column name="description" type="VARCHAR(512)"/>
+            <column name="resource_class" type="VARCHAR(255)"/>
+            <column name="resource_param" type="VARCHAR(255)"/>
+            <column name="func_name" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="sugguest" type="VARCHAR(512)"/>
+            <column name="level" type="VARCHAR(255)"/>
+            <column name="suggestion" type="VARCHAR(255)"/>
+            <column name="stig_id" type="VARCHAR(128)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665285679961-7">
+        <createTable tableName="docker_risk_records">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="docker_risk_records_pkey"/>
+            </column>
+            <column name="node_ip_address" type="VARCHAR(32)"/>
+            <column name="node_name" type="VARCHAR(64)"/>
+            <column name="item_id" type="VARCHAR(64)"/>
+            <column name="item" type="TEXT"/>
+            <column name="result" type="VARCHAR(32)"/>
+            <column name="suggestion" type="TEXT"/>
+            <column name="create_uid" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665285679961-8">
+        <createTable tableName="k8s_risk_records">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="k8s_risk_records_pkey"/>
+            </column>
+            <column name="agent_id" type="VARCHAR(255)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="create_uid" type="VARCHAR(255)"/>
+            <column name="item" type="VARCHAR(255)"/>
+            <column name="item_id" type="VARCHAR(255)"/>
+            <column name="node_ip_address" type="VARCHAR(255)"/>
+            <column name="node_name" type="VARCHAR(255)"/>
+            <column name="result" type="VARCHAR(255)"/>
+            <column name="suggestion" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665285679961-9">
+        <createTable remarks="角色信息表" tableName="role">
+            <column name="name" remarks="角色名称" type="VARCHAR(255)"/>
+            <column name="role_key" remarks="角色key" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665285679961-10">
+        <createTable tableName="setting_item_template">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="setting_item_template_pkey"/>
+            </column>
+            <column name="type" type="VARCHAR(64)"/>
+            <column name="item_type" type="VARCHAR(64)"/>
+            <column name="item_id" type="VARCHAR(64)"/>
+            <column name="item" type="VARCHAR(255)"/>
+            <column name="item_desc" type="VARCHAR(512)"/>
+            <column name="func_name" type="VARCHAR(255)"/>
+            <column name="create_uid" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="template_name" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(512)"/>
+            <column name="template_id" type="VARCHAR(64)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665285679961-11">
+        <createTable tableName="setting_risk_detect_items">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="setting_risk_detect_items_pkey"/>
+            </column>
+            <column name="item_id" type="VARCHAR(64)"/>
+            <column name="item" type="TEXT"/>
+            <column name="type" type="VARCHAR(32)"/>
+            <column name="type_id" type="BIGINT"/>
+            <column name="level" type="VARCHAR(32)"/>
+            <column name="level_id" type="BIGINT"/>
+            <column name="name" type="VARCHAR(64)"/>
+            <column name="distribution" type="TEXT"/>
+            <column name="system" type="TEXT"/>
+            <column name="system_ver" type="TEXT"/>
+            <column name="app_id" type="BIGINT"/>
+            <column name="app" type="TEXT"/>
+            <column name="app_ver" type="TEXT"/>
+            <column name="suggestion" type="TEXT"/>
+            <column name="result" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665285679961-12">
+        <createTable tableName="setting_risk_records_info">
+            <column name="id" remarks="主键" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="setting_risk_records_info_pkey"/>
+            </column>
+            <column name="node_ip_address" remarks="ip地址" type="VARCHAR(32)"/>
+            <column name="type" remarks="风险类型" type="VARCHAR(32)"/>
+            <column name="type_id" remarks="风险类型id" type="VARCHAR(64)"/>
+            <column name="level" remarks="风险等级" type="VARCHAR(32)"/>
+            <column name="level_id" remarks="风险等级id" type="BIGINT"/>
+            <column name="name" remarks="检测项概述" type="VARCHAR(512)"/>
+            <column name="item" remarks="检测项详述" type="TEXT"/>
+            <column name="item_id" remarks="检测项id" type="VARCHAR(64)"/>
+            <column name="suggestion" type="TEXT"/>
+            <column name="result" remarks="检测结果" type="VARCHAR(32)"/>
+            <column name="distribution" type="TEXT"/>
+            <column name="system" type="TEXT"/>
+            <column name="system_ver" type="TEXT"/>
+            <column name="app_id" type="BIGINT"/>
+            <column name="app" type="TEXT"/>
+            <column name="app_ver" type="TEXT"/>
+            <column name="create_uid" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="agentid" type="VARCHAR(128)"/>
+            <column name="func_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665285679961-13">
+        <createTable tableName="system_bug_records_info">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="system_bug_records_info_pkey"/>
+            </column>
+            <column name="affect_scope" type="TEXT"/>
+            <column name="agent_id" type="VARCHAR(255)"/>
+            <column name="app" type="VARCHAR(255)"/>
+            <column name="app_id" type="INTEGER"/>
+            <column name="app_ver" type="VARCHAR(255)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="create_uid" type="VARCHAR(255)"/>
+            <column name="cve_number" type="VARCHAR(255)"/>
+            <column name="description" type="TEXT"/>
+            <column name="distribution" type="VARCHAR(255)"/>
+            <column name="feature" type="TEXT"/>
+            <column name="feature_code" type="TEXT"/>
+            <column name="level" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="node_ip_address" type="VARCHAR(255)"/>
+            <column name="score" type="VARCHAR(255)"/>
+            <column name="solution" type="TEXT"/>
+            <column name="suggestion" type="TEXT"/>
+            <column name="system" type="VARCHAR(255)"/>
+            <column name="system_ver" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="vector_string" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665285679961-14">
+        <createTable tableName="weak_password_records_info">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="weak_password_records_info_pkey"/>
+            </column>
+            <column name="node_ip_address" type="VARCHAR(32)"/>
+            <column name="app" type="VARCHAR(32)"/>
+            <column name="app_id" type="BIGINT"/>
+            <column name="weak_password_cnt" type="BIGINT"/>
+            <column name="weak_password_detail" type="TEXT"/>
+            <column name="create_uid" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="agentid" type="VARCHAR(128)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665285679961-15">
+        <createTable tableName="win_vul_patch_info">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="win_vul_patch_info_pkey"/>
+            </column>
+            <column name="agent_id" type="VARCHAR(255)"/>
+            <column name="check_status" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="description" type="TEXT"/>
+            <column name="fix_end_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="fix_start_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="fix_status" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="install_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="md5" type="VARCHAR(255)"/>
+            <column name="name" type="TEXT"/>
+            <column name="node_ip_address" type="VARCHAR(255)"/>
+            <column name="patch_id" type="VARCHAR(255)"/>
+            <column name="pubdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="result_code" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="url" type="TEXT"/>
+            <column name="warn_level" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665292327481-1">
+        <createTable remarks="用户信息表" tableName="user">
+            <column name="id" remarks="主键" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_pkey"/>
+            </column>
+            <column name="username" remarks="用户名称" type="VARCHAR(255)"/>
+            <column name="password" remarks="密码" type="VARCHAR(255)"/>
+            <column name="age" remarks="性别" type="INTEGER"/>
+            <column name="sex" remarks="性别" type="VARCHAR(255)"/>
+            <column name="role" remarks="角色" type="VARCHAR(255)"/>
+            <column defaultValueComputed="now()" name="create_time" remarks="创建时间" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665292327481-2">
+        <createTable tableName="basic_cve_info">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="basic_cve_info_pkey"/>
+            </column>
+            <column name="cve_id" remarks="cveId" type="VARCHAR(64)"/>
+            <column name="cwe_id" remarks="暂时没有用到，也存下来" type="VARCHAR(64)"/>
+            <column name="score" remarks="评分" type="VARCHAR(32)"/>
+            <column name="title" remarks="漏洞名称" type="VARCHAR(512)"/>
+            <column name="type" remarks="漏洞类型" type="VARCHAR(256)"/>
+            <column name="description" remarks="漏洞详细描述" type="TEXT"/>
+            <column name="official_solutions" remarks="官方解决方案" type="TEXT"/>
+            <column name="suggestions" remarks="建议" type="TEXT"/>
+            <column name="references_list" remarks="参考资料" type="TEXT"/>
+            <column name="cnvd_id" remarks="cnvd_id，暂时没有用到，也存下来" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="severity" type="VARCHAR(64)"/>
+            <column name="vector_string" remarks="评分细则" type="VARCHAR(255)"/>
+            <column name="exp_flag" remarks="是否exp特征" type="VARCHAR(32)"/>
+            <column name="attack_complexity" type="VARCHAR(255)"/>
+            <column name="attack_vector" type="VARCHAR(255)"/>
+            <column name="availability_impact" type="VARCHAR(255)"/>
+            <column name="confidentiality_impact" type="VARCHAR(255)"/>
+            <column name="integrity_impact" type="VARCHAR(255)"/>
+            <column name="privileges_required" type="VARCHAR(255)"/>
+            <column name="user_interaction" type="VARCHAR(255)"/>
+            <column name="risk_type" type="VARCHAR(255)"/>
+            <column name="public_time" remarks="漏洞发布时间" type="VARCHAR(255)"/>
+            <column name="update_time" remarks="漏洞更新时间" type="VARCHAR(255)"/>
+            <column name="cnnvd_number" type="VARCHAR(64)"/>
+            <column name="affects" remarks="受影响实体" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665292327481-3">
+        <createTable tableName="temp_basic_cve">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="temp_basic_cve_pkey"/>
+            </column>
+            <column name="affects" type="TEXT"/>
+            <column name="cnnvd_number" type="VARCHAR(64)"/>
+            <column name="cve_number" type="VARCHAR(64)"/>
+            <column name="level" type="VARCHAR(64)"/>
+            <column name="links" type="TEXT"/>
+            <column name="manufacturer" type="TEXT"/>
+            <column name="official_solutions" type="TEXT"/>
+            <column name="patch" type="TEXT"/>
+            <column name="public_time" type="VARCHAR(255)"/>
+            <column name="risk_type" type="VARCHAR(255)"/>
+            <column name="source" type="VARCHAR(255)"/>
+            <column name="summary" type="TEXT"/>
+            <column name="title" type="VARCHAR(512)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="update_time" type="VARCHAR(255)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665292327481-4">
+        <createIndex indexName="INDX_CVE_ID" tableName="basic_cve_info">
+            <column name="cve_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665292327481-5">
+        <createIndex indexName="INDX_CVE_NUMBER" tableName="temp_basic_cve" unique="true">
+            <column name="cve_number"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665292327481-6">
+        <createTable tableName="basic_setting_item">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="basic_setting_item_pkey"/>
+            </column>
+            <column name="item_id" type="VARCHAR(64)"/>
+            <column name="type" type="VARCHAR(64)"/>
+            <column name="item" type="VARCHAR(512)"/>
+            <column name="expected" type="VARCHAR(512)"/>
+            <column name="description" type="VARCHAR(512)"/>
+            <column name="resource_class" type="VARCHAR(255)"/>
+            <column name="resource_param" type="VARCHAR(255)"/>
+            <column name="func_name" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="sugguest" type="VARCHAR(512)"/>
+            <column name="level" type="VARCHAR(255)"/>
+            <column name="suggestion" type="VARCHAR(255)"/>
+            <column name="stig_id" type="VARCHAR(128)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665292327481-7">
+        <createTable tableName="docker_risk_records">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="docker_risk_records_pkey"/>
+            </column>
+            <column name="node_ip_address" type="VARCHAR(32)"/>
+            <column name="node_name" type="VARCHAR(64)"/>
+            <column name="item_id" type="VARCHAR(64)"/>
+            <column name="item" type="TEXT"/>
+            <column name="result" type="VARCHAR(32)"/>
+            <column name="suggestion" type="TEXT"/>
+            <column name="create_uid" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665292327481-8">
+        <createTable tableName="k8s_risk_records">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="k8s_risk_records_pkey"/>
+            </column>
+            <column name="agent_id" type="VARCHAR(255)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="create_uid" type="VARCHAR(255)"/>
+            <column name="item" type="VARCHAR(255)"/>
+            <column name="item_id" type="VARCHAR(255)"/>
+            <column name="node_ip_address" type="VARCHAR(255)"/>
+            <column name="node_name" type="VARCHAR(255)"/>
+            <column name="result" type="VARCHAR(255)"/>
+            <column name="suggestion" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665292327481-9">
+        <createTable remarks="角色信息表" tableName="role">
+            <column name="name" remarks="角色名称" type="VARCHAR(255)"/>
+            <column name="role_key" remarks="角色key" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665292327481-10">
+        <createTable tableName="setting_item_template">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="setting_item_template_pkey"/>
+            </column>
+            <column name="type" type="VARCHAR(64)"/>
+            <column name="item_type" type="VARCHAR(64)"/>
+            <column name="item_id" type="VARCHAR(64)"/>
+            <column name="item" type="VARCHAR(255)"/>
+            <column name="item_desc" type="VARCHAR(512)"/>
+            <column name="func_name" type="VARCHAR(255)"/>
+            <column name="create_uid" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="template_name" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(512)"/>
+            <column name="template_id" type="VARCHAR(64)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665292327481-11">
+        <createTable tableName="setting_risk_detect_items">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="setting_risk_detect_items_pkey"/>
+            </column>
+            <column name="item_id" type="VARCHAR(64)"/>
+            <column name="item" type="TEXT"/>
+            <column name="type" type="VARCHAR(32)"/>
+            <column name="type_id" type="BIGINT"/>
+            <column name="level" type="VARCHAR(32)"/>
+            <column name="level_id" type="BIGINT"/>
+            <column name="name" type="VARCHAR(64)"/>
+            <column name="distribution" type="TEXT"/>
+            <column name="system" type="TEXT"/>
+            <column name="system_ver" type="TEXT"/>
+            <column name="app_id" type="BIGINT"/>
+            <column name="app" type="TEXT"/>
+            <column name="app_ver" type="TEXT"/>
+            <column name="suggestion" type="TEXT"/>
+            <column name="result" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665292327481-12">
+        <createTable tableName="setting_risk_records_info">
+            <column name="id" remarks="主键" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="setting_risk_records_info_pkey"/>
+            </column>
+            <column name="node_ip_address" remarks="ip地址" type="VARCHAR(32)"/>
+            <column name="type" remarks="风险类型" type="VARCHAR(32)"/>
+            <column name="type_id" remarks="风险类型id" type="VARCHAR(64)"/>
+            <column name="level" remarks="风险等级" type="VARCHAR(32)"/>
+            <column name="level_id" remarks="风险等级id" type="BIGINT"/>
+            <column name="name" remarks="检测项概述" type="VARCHAR(512)"/>
+            <column name="item" remarks="检测项详述" type="TEXT"/>
+            <column name="item_id" remarks="检测项id" type="VARCHAR(64)"/>
+            <column name="suggestion" type="TEXT"/>
+            <column name="result" remarks="检测结果" type="VARCHAR(32)"/>
+            <column name="distribution" type="TEXT"/>
+            <column name="system" type="TEXT"/>
+            <column name="system_ver" type="TEXT"/>
+            <column name="app_id" type="BIGINT"/>
+            <column name="app" type="TEXT"/>
+            <column name="app_ver" type="TEXT"/>
+            <column name="create_uid" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="agentid" type="VARCHAR(128)"/>
+            <column name="func_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665292327481-13">
+        <createTable tableName="system_bug_records_info">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="system_bug_records_info_pkey"/>
+            </column>
+            <column name="affect_scope" type="TEXT"/>
+            <column name="agent_id" type="VARCHAR(255)"/>
+            <column name="app" type="VARCHAR(255)"/>
+            <column name="app_id" type="INTEGER"/>
+            <column name="app_ver" type="VARCHAR(255)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="create_uid" type="VARCHAR(255)"/>
+            <column name="cve_number" type="VARCHAR(255)"/>
+            <column name="description" type="TEXT"/>
+            <column name="distribution" type="VARCHAR(255)"/>
+            <column name="feature" type="TEXT"/>
+            <column name="feature_code" type="TEXT"/>
+            <column name="level" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="node_ip_address" type="VARCHAR(255)"/>
+            <column name="score" type="VARCHAR(255)"/>
+            <column name="solution" type="TEXT"/>
+            <column name="suggestion" type="TEXT"/>
+            <column name="system" type="VARCHAR(255)"/>
+            <column name="system_ver" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="vector_string" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665292327481-14">
+        <createTable tableName="weak_password_records_info">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="weak_password_records_info_pkey"/>
+            </column>
+            <column name="node_ip_address" type="VARCHAR(32)"/>
+            <column name="app" type="VARCHAR(32)"/>
+            <column name="app_id" type="BIGINT"/>
+            <column name="weak_password_cnt" type="BIGINT"/>
+            <column name="weak_password_detail" type="TEXT"/>
+            <column name="create_uid" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="agentid" type="VARCHAR(128)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wanglibing (generated)" id="1665292327481-15">
+        <createTable tableName="win_vul_patch_info">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="win_vul_patch_info_pkey"/>
+            </column>
+            <column name="agent_id" type="VARCHAR(255)"/>
+            <column name="check_status" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="description" type="TEXT"/>
+            <column name="fix_end_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="fix_start_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="fix_status" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="install_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="md5" type="VARCHAR(255)"/>
+            <column name="name" type="TEXT"/>
+            <column name="node_ip_address" type="VARCHAR(255)"/>
+            <column name="patch_id" type="VARCHAR(255)"/>
+            <column name="pubdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="result_code" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="url" type="TEXT"/>
+            <column name="warn_level" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665292394374-1">
+        <createTable remarks="用户信息表" tableName="user">
+            <column name="id" remarks="主键" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_pkey"/>
+            </column>
+            <column name="username" remarks="用户名称" type="VARCHAR(255)"/>
+            <column name="password" remarks="密码" type="VARCHAR(255)"/>
+            <column name="age" remarks="性别" type="INTEGER"/>
+            <column name="sex" remarks="性别" type="VARCHAR(255)"/>
+            <column name="role" remarks="角色" type="VARCHAR(255)"/>
+            <column defaultValueComputed="now()" name="create_time" remarks="创建时间" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665292394374-2">
+        <createTable tableName="basic_cve_info">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="basic_cve_info_pkey"/>
+            </column>
+            <column name="cve_id" remarks="cveId" type="VARCHAR(64)"/>
+            <column name="cwe_id" remarks="暂时没有用到，也存下来" type="VARCHAR(64)"/>
+            <column name="score" remarks="评分" type="VARCHAR(32)"/>
+            <column name="title" remarks="漏洞名称" type="VARCHAR(512)"/>
+            <column name="type" remarks="漏洞类型" type="VARCHAR(256)"/>
+            <column name="description" remarks="漏洞详细描述" type="TEXT"/>
+            <column name="official_solutions" remarks="官方解决方案" type="TEXT"/>
+            <column name="suggestions" remarks="建议" type="TEXT"/>
+            <column name="references_list" remarks="参考资料" type="TEXT"/>
+            <column name="cnvd_id" remarks="cnvd_id，暂时没有用到，也存下来" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="severity" type="VARCHAR(64)"/>
+            <column name="vector_string" remarks="评分细则" type="VARCHAR(255)"/>
+            <column name="exp_flag" remarks="是否exp特征" type="VARCHAR(32)"/>
+            <column name="attack_complexity" type="VARCHAR(255)"/>
+            <column name="attack_vector" type="VARCHAR(255)"/>
+            <column name="availability_impact" type="VARCHAR(255)"/>
+            <column name="confidentiality_impact" type="VARCHAR(255)"/>
+            <column name="integrity_impact" type="VARCHAR(255)"/>
+            <column name="privileges_required" type="VARCHAR(255)"/>
+            <column name="user_interaction" type="VARCHAR(255)"/>
+            <column name="risk_type" type="VARCHAR(255)"/>
+            <column name="public_time" remarks="漏洞发布时间" type="VARCHAR(255)"/>
+            <column name="update_time" remarks="漏洞更新时间" type="VARCHAR(255)"/>
+            <column name="cnnvd_number" type="VARCHAR(64)"/>
+            <column name="affects" remarks="受影响实体" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665292394374-3">
+        <createTable tableName="temp_basic_cve">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="temp_basic_cve_pkey"/>
+            </column>
+            <column name="affects" type="TEXT"/>
+            <column name="cnnvd_number" type="VARCHAR(64)"/>
+            <column name="cve_number" type="VARCHAR(64)"/>
+            <column name="level" type="VARCHAR(64)"/>
+            <column name="links" type="TEXT"/>
+            <column name="manufacturer" type="TEXT"/>
+            <column name="official_solutions" type="TEXT"/>
+            <column name="patch" type="TEXT"/>
+            <column name="public_time" type="VARCHAR(255)"/>
+            <column name="risk_type" type="VARCHAR(255)"/>
+            <column name="source" type="VARCHAR(255)"/>
+            <column name="summary" type="TEXT"/>
+            <column name="title" type="VARCHAR(512)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="update_time" type="VARCHAR(255)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665292394374-4">
+        <createIndex indexName="INDX_CVE_ID" tableName="basic_cve_info">
+            <column name="cve_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665292394374-5">
+        <createIndex indexName="INDX_CVE_NUMBER" tableName="temp_basic_cve" unique="true">
+            <column name="cve_number"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665292394374-6">
+        <createTable tableName="basic_setting_item">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="basic_setting_item_pkey"/>
+            </column>
+            <column name="item_id" type="VARCHAR(64)"/>
+            <column name="type" type="VARCHAR(64)"/>
+            <column name="item" type="VARCHAR(512)"/>
+            <column name="expected" type="VARCHAR(512)"/>
+            <column name="description" type="VARCHAR(512)"/>
+            <column name="resource_class" type="VARCHAR(255)"/>
+            <column name="resource_param" type="VARCHAR(255)"/>
+            <column name="func_name" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="sugguest" type="VARCHAR(512)"/>
+            <column name="level" type="VARCHAR(255)"/>
+            <column name="suggestion" type="VARCHAR(255)"/>
+            <column name="stig_id" type="VARCHAR(128)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665292394374-7">
+        <createTable tableName="docker_risk_records">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="docker_risk_records_pkey"/>
+            </column>
+            <column name="node_ip_address" type="VARCHAR(32)"/>
+            <column name="node_name" type="VARCHAR(64)"/>
+            <column name="item_id" type="VARCHAR(64)"/>
+            <column name="item" type="TEXT"/>
+            <column name="result" type="VARCHAR(32)"/>
+            <column name="suggestion" type="TEXT"/>
+            <column name="create_uid" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665292394374-8">
+        <createTable tableName="k8s_risk_records">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="k8s_risk_records_pkey"/>
+            </column>
+            <column name="agent_id" type="VARCHAR(255)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="create_uid" type="VARCHAR(255)"/>
+            <column name="item" type="VARCHAR(255)"/>
+            <column name="item_id" type="VARCHAR(255)"/>
+            <column name="node_ip_address" type="VARCHAR(255)"/>
+            <column name="node_name" type="VARCHAR(255)"/>
+            <column name="result" type="VARCHAR(255)"/>
+            <column name="suggestion" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665292394374-9">
+        <createTable remarks="角色信息表" tableName="role">
+            <column name="name" remarks="角色名称" type="VARCHAR(255)"/>
+            <column name="role_key" remarks="角色key" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665292394374-10">
+        <createTable tableName="setting_item_template">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="setting_item_template_pkey"/>
+            </column>
+            <column name="type" type="VARCHAR(64)"/>
+            <column name="item_type" type="VARCHAR(64)"/>
+            <column name="item_id" type="VARCHAR(64)"/>
+            <column name="item" type="VARCHAR(255)"/>
+            <column name="item_desc" type="VARCHAR(512)"/>
+            <column name="func_name" type="VARCHAR(255)"/>
+            <column name="create_uid" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="template_name" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(512)"/>
+            <column name="template_id" type="VARCHAR(64)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665292394374-11">
+        <createTable tableName="setting_risk_detect_items">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="setting_risk_detect_items_pkey"/>
+            </column>
+            <column name="item_id" type="VARCHAR(64)"/>
+            <column name="item" type="TEXT"/>
+            <column name="type" type="VARCHAR(32)"/>
+            <column name="type_id" type="BIGINT"/>
+            <column name="level" type="VARCHAR(32)"/>
+            <column name="level_id" type="BIGINT"/>
+            <column name="name" type="VARCHAR(64)"/>
+            <column name="distribution" type="TEXT"/>
+            <column name="system" type="TEXT"/>
+            <column name="system_ver" type="TEXT"/>
+            <column name="app_id" type="BIGINT"/>
+            <column name="app" type="TEXT"/>
+            <column name="app_ver" type="TEXT"/>
+            <column name="suggestion" type="TEXT"/>
+            <column name="result" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665292394374-12">
+        <createTable tableName="setting_risk_records_info">
+            <column name="id" remarks="主键" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="setting_risk_records_info_pkey"/>
+            </column>
+            <column name="node_ip_address" remarks="ip地址" type="VARCHAR(32)"/>
+            <column name="type" remarks="风险类型" type="VARCHAR(32)"/>
+            <column name="type_id" remarks="风险类型id" type="VARCHAR(64)"/>
+            <column name="level" remarks="风险等级" type="VARCHAR(32)"/>
+            <column name="level_id" remarks="风险等级id" type="BIGINT"/>
+            <column name="name" remarks="检测项概述" type="VARCHAR(512)"/>
+            <column name="item" remarks="检测项详述" type="TEXT"/>
+            <column name="item_id" remarks="检测项id" type="VARCHAR(64)"/>
+            <column name="suggestion" type="TEXT"/>
+            <column name="result" remarks="检测结果" type="VARCHAR(32)"/>
+            <column name="distribution" type="TEXT"/>
+            <column name="system" type="TEXT"/>
+            <column name="system_ver" type="TEXT"/>
+            <column name="app_id" type="BIGINT"/>
+            <column name="app" type="TEXT"/>
+            <column name="app_ver" type="TEXT"/>
+            <column name="create_uid" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="agentid" type="VARCHAR(128)"/>
+            <column name="func_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665292394374-13">
+        <createTable tableName="system_bug_records_info">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="system_bug_records_info_pkey"/>
+            </column>
+            <column name="affect_scope" type="TEXT"/>
+            <column name="agent_id" type="VARCHAR(255)"/>
+            <column name="app" type="VARCHAR(255)"/>
+            <column name="app_id" type="INTEGER"/>
+            <column name="app_ver" type="VARCHAR(255)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="create_uid" type="VARCHAR(255)"/>
+            <column name="cve_number" type="VARCHAR(255)"/>
+            <column name="description" type="TEXT"/>
+            <column name="distribution" type="VARCHAR(255)"/>
+            <column name="feature" type="TEXT"/>
+            <column name="feature_code" type="TEXT"/>
+            <column name="level" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="node_ip_address" type="VARCHAR(255)"/>
+            <column name="score" type="VARCHAR(255)"/>
+            <column name="solution" type="TEXT"/>
+            <column name="suggestion" type="TEXT"/>
+            <column name="system" type="VARCHAR(255)"/>
+            <column name="system_ver" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="vector_string" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665292394374-14">
+        <createTable tableName="weak_password_records_info">
+            <column name="id" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="weak_password_records_info_pkey"/>
+            </column>
+            <column name="node_ip_address" type="VARCHAR(32)"/>
+            <column name="app" type="VARCHAR(32)"/>
+            <column name="app_id" type="BIGINT"/>
+            <column name="weak_password_cnt" type="BIGINT"/>
+            <column name="weak_password_detail" type="TEXT"/>
+            <column name="create_uid" type="VARCHAR(64)"/>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="agentid" type="VARCHAR(128)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamwlb (generated)" id="1665292394374-15">
+        <createTable tableName="win_vul_patch_info">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="win_vul_patch_info_pkey"/>
+            </column>
+            <column name="agent_id" type="VARCHAR(255)"/>
+            <column name="check_status" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="description" type="TEXT"/>
+            <column name="fix_end_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="fix_start_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="fix_status" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="install_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="md5" type="VARCHAR(255)"/>
+            <column name="name" type="TEXT"/>
+            <column name="node_ip_address" type="VARCHAR(255)"/>
+            <column name="patch_id" type="VARCHAR(255)"/>
+            <column name="pubdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="result_code" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="url" type="TEXT"/>
+            <column name="warn_level" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,23 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <changeSet author="wanglibing" id="1662615627445-2">
+        <createTable tableName="role" remarks="角色信息表">
+            <column name="name" remarks="角色名称" type="VARCHAR(255)"/>
+            <column name="role_key" remarks="角色key" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="wanglibing" id="1662615627445-3">
+        <createTable tableName="user" remarks="用户信息表">
+            <column name="id" type="INT" remarks="主键">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="username" type="VARCHAR(255)" remarks="用户名称"/>
+            <column name="password" type="VARCHAR(255)" remarks="密码"/>
+            <column name="age" type="INT" remarks="性别"/>
+            <column name="sex" type="VARCHAR(255)" remarks="性别"/>
+            <column name="role" type="VARCHAR(255)" remarks="角色"/>
+            <column name="create_time" type="DATETIME" defaultValueComputed="NOW()" remarks="创建时间"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

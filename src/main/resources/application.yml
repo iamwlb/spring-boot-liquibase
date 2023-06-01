@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: spring-boot-liquibase
+  datasource:
+    url: jdbc:postgresql://10.250.128.11:5432/liquibase
+    username: postgres
+    password: 9).iz3ZS9)
+    driverClassName: org.postgresql.Driver
+
+#    clickhouse:
+#      address: jdbc:clickhouse://10.250.128.11:8123
+#      username: default
+#      password: 9).iz3ZS9)
+#      db: liquibase
+#      socketTimeout: 600000
+  liquibase:
+    # 指定配置文件路径
+    change-log: classpath:db/db.changelog-master.xml
+    # 如果为 true 相当于每次都重置数据库
+    drop-first: false
+    # 是否启用
+    enabled: true
+    # 记录版本日志表
+    database-change-log-table: databasechangelog
+    # 记录版本改变lock表
+    database-change-log-lock-table: databasechangeloglock
+server:
+  port: 8080
